@@ -8,10 +8,10 @@ typedef struct {
     char* states; //Q
 
     int num_input_symbols;
-    char* input_symbols; //Sigma -> Alfabeto da fita
+    char* input_symbols; //Σ -> Alfabeto do automato/fita
 
     int num_stack_symbols;
-    char* stack_symbols; //Gama -> Alfabeto da pilha
+    char* stack_symbols; //Γ -> Alfabeto da pilha
 
     char initial_state; //q0
 
@@ -24,7 +24,7 @@ typedef struct {
         char input_symbol;
         char stack_top;
         char* stack_write;
-    } * transitions; //Delta
+    } * transitions; //δ
 
     int num_final_states;
     char* final_states; //F 
@@ -34,10 +34,31 @@ typedef struct {
 
 
 void initializePDA(Automaton* pda) {
+    FILE *file;
+    char line[256];
 
+    file = fopen("imput", "r");
+    if (file == NULL) {
+        perror("Failed to open the file");
+        return 1;
+    }
+
+    // Read and print each line from the file
+    while (fgets(line, sizeof(line), file) != NULL) {
+        
+        printf("%s", line);
+    }
+
+    // Close the file
+    fclose(file);
 }
 
-void visualizePDA(const Automaton* pda) {
+int main(int argc, char const *argv[])
+{
     
+
+    
+
+    return 0;
 }
 
