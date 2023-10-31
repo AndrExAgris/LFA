@@ -4,7 +4,7 @@ a b ? # alfabeto ex: a b
 
 A B ε # simbolos pilha ex:: A B C
 
-δ : #Digite em cada linha um transição como
+δ : #Digite por linha(estadoatual, fita, pilha, desenpilha, estado destino)
 q0 a ε B q0
 q0 b B ε q1
 q0 ? ? ε qf
