@@ -8,8 +8,8 @@ A B ε # simbolos pilha ex:: A B C
 q0 a ε B q0
 q0 b B ε q1
 q0 ? ? ε qf
-q1 b B ε q1
-q1 ? ? ε qf
+q1 b ε ε q0
+q1 ? ? B qf
 
 q0 #estado inicial
 

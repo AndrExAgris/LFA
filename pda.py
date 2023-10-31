@@ -36,11 +36,11 @@ init = l.split("#")[0]
 init = init.split()
 quint.append(init)
 
+f.readline()
 l = f.readline()
 termin = l.split("#")[0]
 termin = termin.split()
 quint.append(termin)
-
 
 #criando o arquivo do graphviz -------------------------------------------------------
 gra = open("graphpy.gv", "w+")
@@ -52,10 +52,10 @@ gra.write(' init [shape=point]\n')
 for x in quint[4]:
     gra.write(' init -> {}\n'.format(x))
 
-finais = ' [shape=doublecircle] \n'
+finais = " node[shape=doublecircle] "
 for x in quint[5]:
-    finais += x
-gra.write(x)
+    finais = finais + x
+gra.write(finais + ";\n")
 
 gra.write(' node[shape=circle]\n')
 
@@ -77,27 +77,33 @@ for i in fita:
         print(i, " não é aceito pelo autamato \nfita não reconhecida")
         exit()
     
-    print(stack,"\n", estado)
 
     for j in quint[3]:
         if estado == j[0]:
             if i == j[1]:
                 if len(stack) != 0:   
-                    print(stack, j)
                     if stack[-1]== j[3]:  
                         stack.pop()
-                        stack.append(j[2])
+                        if j[2] != "ε":
+                            stack.append(j[2])
                         estado = j[4]
-                        print("leu o elemento ", posfita)
                         posfita+=1
-                        continue
+                        break
+                    elif j[3] == "ε":
+                        if j[2] != "ε":
+                            stack.append(j[2])
+                        estado = j[4]
+                        posfita+=1
+                        break
                 else:
                     if j[3] == "ε":  
                         if j[2] != "?":
                             stack.append(j[2])
                         estado = j[4]
-                        print("leu o elemento ", posfita)
                         posfita+=1
-                        continue
+                        break
                 print("Fita não reconhecida")
                 break
+    
+if (estado in quint[5]):
+    print("Fita reconhecida")

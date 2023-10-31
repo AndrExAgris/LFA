@@ -2,10 +2,11 @@
  rankdir=LR;
  init [shape=point]
  init -> q0
-q0 node[shape=circle]
+ node[shape=doublecircle] qf;
+ node[shape=circle]
  q0 -> q0 [label="a,ε,B"]
  q0 -> q1 [label="b,B,ε"]
  q0 -> qf [label="?,?,ε"]
- q1 -> q1 [label="b,B,ε"]
- q1 -> qf [label="?,?,ε"]
+ q1 -> q0 [label="b,ε,ε"]
+ q1 -> qf [label="?,?,B"]
 }
