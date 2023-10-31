@@ -1,53 +1,16 @@
-Q : q0 q1 q2 q3
-Σ : a b
-Γ : A B Z
-δ :
-q0 a Z q0 AZ
-q0 a A q0 AA
-q0 b A q1 ''  
-q1 b A q1 ''  
-q1 '' Z q2 Z  
-q2 b Z q2 Z  
-q2 '' '' q3 ''
-q3 '' A q3 '' 
-q3 '' Z q3 Z  
-q3 '' '' qf ''
-qf a Z qf ''  
-qf '' '' qf ''
-qf '' Z qf Z  
-qf '' '' qf ''
-qf b '' qf '' 
-qf '' A qf A  
-qf '' A qf A  
-qf '' B qf B  
+q0 q1 qf #estados ex: q0 q1 q2
 
-q₀ : q0
-F : qf
+a b ? # alfabeto ex: a b
 
+A B ε # simbolos pilha ex:: A B C
 
+δ : #Digite em cada linha um transição como
+q0 a ε B q0
+q0 b B ε q1
+q0 ? ? ε qf
+q1 b B ε q1
+q1 ? ? ε qf
 
-Q (Conjunto de Estados): q0 q1 q2 q3
-Σ (Alfabeto de Entrada): a b
-Γ (Alfabeto da Pilha): A B Z
-δ (Função de Transição):
-q0 a Z q0 AZ
-q0 a A q0 AA
-q0 b A q1 ''  # Transição vazia
-q1 b A q1 ''  # Transição vazia
-q1 '' Z q2 Z  # Transição vazia
-q2 b Z q2 Z  # Transição vazia
-q2 '' '' q3 ''  # Transição vazia
-q3 '' A q3 ''  # Transição vazia
-q3 '' Z q3 Z  # Transição vazia
-q3 '' '' qf ''  # Transição vazia para um estado de aceitação
-qf a Z qf ''  # Transição vazia para um estado de aceitação
-qf '' '' qf ''  # Transição vazia para um estado de aceitação
-qf '' Z qf Z  # Transição vazia para um estado de aceitação
-qf '' '' qf ''  # Transição vazia para um estado de aceitação
-qf b '' qf ''  # Transição vazia para um estado de aceitação
-qf '' A qf A  # Transição para desempilhar 'A'
-qf '' A qf A  # Transição para desempilhar 'A'
-qf '' B qf B  # Transição para desempilhar 'B'
+q0 #estado inicial
 
-q₀ (Estado Inicial): q0
-F (Conjunto de Estados de Aceitação): qf
+qf #estado final
