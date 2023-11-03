@@ -1,6 +1,7 @@
  digraph X {
  rankdir=LR;
  init [shape=point]
+ node[shape=circle]
  init -> q0
  node[shape=doublecircle] qf;
  node[shape=circle]

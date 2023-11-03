@@ -1,5 +1,35 @@
+#graphviz dot file -----------------------------------------------------------------------
 
-# lendo a ntuplaupla para um arquivo -------------------------------------------------
+def genpng(graph, current):
+    gra = open("automata.dot", "w+")
+
+    gra.write(' digraph X {\n rankdir=LR;\n')
+
+    gra.write(' init [shape=point]\n')
+    gra.write(' node[shape=circle]\n')
+
+    for x in graph[4]:
+        gra.write(' init -> {}\n'.format(x))
+
+    finais = " node[shape=doublecircle] "
+    for x in graph[5]:
+        finais = finais + x
+    gra.write(finais + ";\n")
+
+    gra.write(' node[shape=circle]\n')
+
+    for x in graph[3]:
+        if current == -1:
+            gra.write(' {} -> {} [label="{},{},{}"]\n'.format(x[0],x[4], x[1], x[2], x[3]))
+        else:
+            if x == current:
+                gra.write(' {} -> {} [label="{},{},{}", color="red"]\n'.format(x[0],x[4], x[1], x[2], x[3]))
+            else:
+                gra.write(' {} -> {} [label="{},{},{}"]\n'.format(x[0],x[4], x[1], x[2], x[3]))
+    gra.write("}\n")
+
+
+# lendo a ntuplaupla de um arquivo -------------------------------------------------
 f = open("inputfile", "r")
 
 ntupla = []
@@ -43,26 +73,8 @@ termin = termin.split()
 ntupla.append(termin)
 
 #criando o arquivo do graphviz -------------------------------------------------------
-gra = open("automata.gv", "w+")
 
-gra.write(' digraph X {\n rankdir=LR;\n')
-
-gra.write(' init [shape=point]\n')
-
-for x in ntupla[4]:
-    gra.write(' init -> {}\n'.format(x))
-
-finais = " node[shape=doublecircle] "
-for x in ntupla[5]:
-    finais = finais + x
-gra.write(finais + ";\n")
-
-gra.write(' node[shape=circle]\n')
-
-for x in ntupla[3]:
-    gra.write(' {} -> {} [label="{},{},{}"]\n'.format(x[0],x[4], x[1], x[2], x[3]))
-gra.write("}\n")
-
+genpng(ntupla, -1)
 
 #recebendo a fita -------------------------------------------------------------------
 print("Digite a fita (ex1: 'abaaa' ex2: '')")
@@ -97,6 +109,10 @@ for i in fita:
                     break
             print("Fita não reconhecida")
             exit()
+        a = input()
+        transicao = j
+        genpng(ntupla, transicao)
+
 
 if posfita != len(fita):
     print("fita não reconhecida")
