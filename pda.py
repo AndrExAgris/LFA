@@ -76,7 +76,7 @@ for i in fita:
     if all(i != item for item in ntupla[1]):
         print(i, " não é aceito pelo autamato \nfita não reconhecida")
         exit()
-    
+   
 
     for j in ntupla[3]:
         if estado == j[0] and i == j[1]:
@@ -97,6 +97,10 @@ for i in fita:
                     break
             print("Fita não reconhecida")
             exit()
+
+if posfita != len(fita):
+    print("fita não reconhecida")
+    exit()
 
 if len(stack) == 0:
     if any(estado == item for item in ntupla[5]):
