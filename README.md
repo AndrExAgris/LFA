@@ -1,45 +1,37 @@
 # LFA
+## Trabalho Final de LFA parte1
+Implementação de um simulador de um PDA(pushdown automata).
 
-Arquivos sempre com a extensão: .pdf (relatório)
+Linguagem: Python 3.11.6
+Bibliotecas utilizadas: subprocess (para realizar comandos de sistema via python)
+Dependencias: graphviz (sudo apt install graphviz)
 
-NUNCA enviem as respostas (códigos) através dos comentários!
+## Inputfile
+O imput file segue uma estrutura simples: elementos de um mesmo grupo são separados por um espaço e grupos são separados por linhas  
+Exemplo:
+```q0 q1 qf #estados
 
-Assim, sigam o seguinte exemplo:
+a b #alfabeto da fita
 
-Para enviar os resultados do TF, o nome do arquivo deve ser:
+B #simbolos da pilha 
 
-resultado-01-TF-XYZ-WRK.c (o mesmo deve ser seguido para os demais arquivos)
+δ : #transiçoes
+q0 a ε B q0
+q0 b B ε q1
+q0 ? ? ε qf
+q1 b B ε q1
+q1 ? ? ε qf
 
-Sendo XYZ e WRK as iniciais dos nomes dos 2 alunos envolvidos (se for feito individualmente, considerar apenas as iniciais do aluno único).
+q0 #estado inicial
 
-As respostas não serão visíveis para o grupo (visualização individual).
+qf #estados finais
+```
+Reparando que as transições como caso especial não tem linhas as dividindo.
+Outro fator importante para o inputfile são caracteres reservados, sendo `ε` como palavra vazia  e `?` como transição vazia.
 
-
-Regra desta avaliação: Trata-se do Trabalho Final (TF), primeira etapa.
- 
-Desenvolva um simulador de Autômatos com pilha.
-
-Dock Machine – Vending Machines
-
-Possibilidades de implementação: o código deverá ser implementado em uma das linguagens destacadas (linguagem C ou Python).
-
-Especificação do projeto: simulador de Autômatos com Pilha (pushdown automata).
-
-Entrada: especificação do modelo.
-
-Saída: validação do modelo (entrada correta) e apresentação de resultados de reconhecimentos (ou não).
-
- 
-Resultados esperados:
-
-    Modelos utilizados (exemplos), com as devidas explicações / justificativas de uso e funcionamento;
-    Apresentação da simulação (entrada e detalhes);
-    Relatório detalhado, com exemplos; e
-    Apresentação de trabalhos relacionados existentes.
-
- *** O uso de geradores de modelos automáticos é recomendado, nesta etapa do trabalho. Sugestão: https://www.graphviz.org/
- 
-
-Prazo (entrega do código e da documentação): até as 23:59 hs de sexta-feira (27/10)!
-
+## Funcionamento
+* Com o diretorio LFA aberto executar ```python3 pda.py```.
+* Então o codigo pedir por uma fita, esta deve ser digitada sem espaços Ex: `aaabbb`
+* Para cada passo do automato ele esperara um imput qualquer do usuario para gerar a proxima imagem do automato com a transição atual sendo destacada em vermelho.
+* Por fim o o simulador ira printar no terminal se a fita foi aceita ou não.(caso não seja aceita a imagem do automato permanecera como a ultima entrada aceita da fita)
 
