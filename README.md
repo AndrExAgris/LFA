@@ -1,14 +1,15 @@
 # LFA
-## Trabalho Final de LFA parte1
-Implementação de um simulador de um PDA(pushdown automata).
+## Trabalho Final de LFA - Parte 1
+Implementação de um simulador de um PDA (pushdown automata).
 
 Linguagem: Python 3.11.6
-Bibliotecas utilizadas: subprocess (para realizar comandos de sistema via python)
-Dependencias: graphviz (sudo apt install graphviz)
+Bibliotecas utilizadas: subprocess (para realizar comandos de sistema via Python)
+Dependências: graphviz (sudo apt install graphviz)
 
 ## Inputfile
-O imput file segue uma estrutura simples: elementos de um mesmo grupo são separados por um espaço e grupos são separados por linhas  
+O input file segue uma estrutura simples: elementos de um mesmo grupo são separados por um espaço e grupos são separados por linhas.
 Exemplo:
+
 ```q0 q1 qf #estados
 
 a b #alfabeto da fita
@@ -26,12 +27,12 @@ q0 #estado inicial
 
 qf #estados finais
 ```
-Reparando que as transições como caso especial não tem linhas as dividindo.
-Outro fator importante para o inputfile são caracteres reservados, sendo `ε` como palavra vazia  e `?` como transição vazia.
+Repare que as transições, como caso especial, não têm linhas as dividindo. Outro fator importante para o inputfile são caracteres reservados, sendo `ε` a palavra vazia e `?` a transição vazia.
 
 ## Funcionamento
-* Com o diretorio LFA aberto executar ```python3 pda.py```.
-* Então o codigo pedir por uma fita, esta deve ser digitada sem espaços Ex: `aaabbb`
-* Para cada passo do automato ele esperara um imput qualquer do usuario para gerar a proxima imagem do automato com a transição atual sendo destacada em vermelho.
-* Por fim o o simulador ira printar no terminal se a fita foi aceita ou não.(caso não seja aceita a imagem do automato permanecera como a ultima entrada aceita da fita)
+- Com o diretório LFA aberto, execute ```python3 pda.py```.
+- Em seguida, o código pedirá por uma fita. Esta deve ser digitada sem espaços, por exemplo: `aaabbb`.
+- Para cada passo do autômato, ele esperará uma entrada do usuário para gerar a próxima imagem do autômato com a transição atual destacada em vermelho.
+- Por fim, o simulador imprimirá no terminal se a fita foi aceita ou não. Caso não seja aceita, a imagem do autômato permanecerá como a última entrada aceita da fita.
+
 

@@ -6,8 +6,8 @@ init -> q0
 node[shape=doublecircle] qf;
 node[shape=circle]
  q0 -> q0 [label="a,ε,B"]
- q0 -> q1 [label="b,B,ε"]
+ q0 -> q1 [label="b,B,ε", color="red"]
  q0 -> qf [label="?,?,ε"]
  q1 -> q1 [label="b,B,ε"]
- q1 -> qf [label="?,?,ε", color="red"]
+ q1 -> qf [label="?,?,ε"]
 }
