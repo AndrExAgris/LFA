@@ -1,5 +1,6 @@
 import random
 
+
 Symbols = ['a', 'b', 'c', 'd', 'a1', 'a2', 'b1', 'b2', 'c1', 'c2', 'd1', 'd2', 'r1', 'r2', 'm1', 'm2', 'v', 'f', 'x', 'S', 'A', 'B', 'C', 'D', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2']
 
 def separa_elementos(fita, Symbols=Symbols):
@@ -10,6 +11,7 @@ def separa_elementos(fita, Symbols=Symbols):
         fita = fita[1:]
         new_elementos = arruma_symbols(elementos, Symbols)
     return new_elementos
+
 
 
 def arruma_symbols(elementos, Symbols=Symbols):
@@ -34,6 +36,7 @@ def arruma_symbols(elementos, Symbols=Symbols):
 
     return new_elementos
 
+global stack
 stack = []
 def populate(pop_v="e", push_v="e"):
     Symbols = ['a', 'b', 'c', 'd', 'a1', 'a2', 'b1', 'b2', 'c1', 'c2', 'd1', 'd2', 'r1', 'r2', 'm1', 'm2', 'v', 'f', 'x', 'S', 'A', 'B', 'C', 'D', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2']
@@ -56,45 +59,10 @@ def reset_stack():
     global stack
     stack.clear()
 
+
 def reset_global_variables():
     global stack
     reset_stack() 
-
-
-def Q0():
-    global stack
-    return populate(push_v="S")
-
-def Q1(fita):
-    global stack
-    Q0()
-    fita = separa_elementos(fita)
-    fita = transitions(fita)    
-            
-            
-    return fita
-
-def Qf(fita):
-    print("blablabla alguma coisa modelo do carro")
-    return 0
-
-def Qs(fita,pilha):
-    print("Erro na fita peça defeituosa")
-    print(fita) # onde a fita parou
-    print(pilha) # estado da pilha quando deu erro
-    return 0
-
-
-
-
-
-
-
- 
-
-
-
-
 
 def epsilon_transition():
     global stack
@@ -192,4 +160,118 @@ def run_transitions(fita):
 
     return fita
 
+def Q0():
+    global stack
+    return populate(push_v="S")
 
+def Q1(fita):
+    global stack
+    Q0()
+    fita = separa_elementos(fita)
+    fita = transitions(fita)        
+            
+    return fita
+
+def Qf(fita):
+    print("blablabla alguma coisa modelo do carro")
+    return 0
+
+def Qs(fita,pilha):
+    print("Erro na fita peça defeituosa")
+    print(fita) # onde a fita parou
+    print(pilha) # estado da pilha quando deu erro
+    return 0
+
+
+def automata(fita):
+    global stack
+    initial_stack = stack.copy()
+    print(initial_stack)
+    Q0()
+    a = True
+    print(stack)
+    while not fita == []:
+        result = Q1(fita)
+        print(result)
+        initial_stack = stack.copy()
+        if result is None and initial_stack == []:
+            Qf()
+            break
+        if result[0] == 'x':
+            Qs(result,pilha=initial_stack)
+            break
+
+    return 0
+
+def add_erro(fita):
+    #Encontrar os indices onde os erros n devem ocorrer
+    
+    indices_sem_erro = [i for i, char in enumerate(fita) if char in ('a', 'b', 'c', 'd', 'a1', 'a2', 'b1', 'b2', 'c1', 'c2', 'd1', 'd2', 'S', 'A', 'B', 'C', 'D', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2')]
+    
+    
+    for i in range(indices_sem_erro[-1] + 1, len(fita)):
+        if random.random() < 0.2:
+            fita[i] = 'x'
+    
+    return fita
+
+def Montagem():
+    while True:
+        print("Qual carro deseja fazer?\n")
+        print("A\n")
+        print("B\n")
+        print("C\n")
+        print("D\n")
+        carro = input()
+        if carro == "A":
+            print("Escolha um modelo\n")
+            print("EX\n")
+            print("GTX\n")
+            modelo = input()
+            print("\Tamanho do lote:\n")
+            Tamanho = input()
+
+
+        if carro == "B":
+            print("Escolha um modelo\n")
+            print("EX\n")
+            print("GTX\n")
+            modelo = input()
+            print("\Tamanho do lote:\n")
+            Tamanho = input()
+
+        if carro == "C":
+            print("Escolha um modelo\n")
+            print("EX\n")
+            print("GTX\n")
+            modelo = input()
+            print("\Tamanho do lote:\n")
+            Tamanho = input()
+
+        if Carro == "D":
+            print("Escolha um modelo")
+            print("EX\n")
+            print("GTX\n")
+            modelo = input()
+            print("\Tamanho do lote:\n")
+            Tamanho = input()
+
+    return Tamanho, 
+
+
+def improviso(cont, fita):
+    while cont >= 0:
+        automata(fita)
+        cont = cont - 1
+    return 0
+
+fita = "aa1r1m1"
+fita = separa_elementos(fita)
+
+improviso(cont=100, fita=fita)
+
+Symbols = ['a', 'b', 'c', 'd', 'a1', 'a2', 'b1', 'b2', 'c1', 'c2', 'd1', 'd2', 'r1', 'r2', 'm1', 'm2', 'v', 'f', 'x', 'S', 'A', 'B', 'C', 'D', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2']
+fita = "aa1"
+fita = separa_elementos(fita)
+
+automata(fita) #teste da construção do automato
