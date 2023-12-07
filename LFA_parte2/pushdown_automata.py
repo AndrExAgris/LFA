@@ -17,8 +17,9 @@ def automata(fita):
         if result is None and initial_stack == []:
             Qf()
             break
-        if not fita and result[0] == 'erro':
+        if result[0] == 'erro':
             Qs(result,pilha=initial_stack)
+            countb+=1
             break
     return 0
 

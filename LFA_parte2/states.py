@@ -16,7 +16,7 @@ def Q1(fita):
     return fita
 
 def Qf(fita):
-    print("blablabla alguma coisa modelo do carro")
+    print("Carro feito")
     return 0
 
 def Qs(fita,pilha):
